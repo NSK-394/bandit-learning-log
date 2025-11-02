@@ -155,6 +155,165 @@ What I learned:
 - How to handle filenames that start with a dash by using `./` before them.
 - Continued improving file navigation and content inspection in Linux.
 
+BANDIT LEVEL [LEVEL 5]
+
+BANDIT LEVEL [LEVEL 5]
+
+# Bandit — Level 5 (Log)
+
+Steps I followed:
+
+1. Logged in using the password from Level 4:
+
+   ssh bandit5@bandit.labs.overthewire.org -p 2220
+
+2. Listed files in my home directory:
+   ls -la
+   → Found a directory named: inhere
+
+3. Changed into that directory:
+   cd inhere
+
+4. Listed contents:
+   ls -la
+   → Found several directories (maybehere00, maybehere01, ...)
+
+5. Searched for the file with exact byte-size requirement:
+   find . -type f -size 1033c 2>/dev/null
+   → Returned: ./maybehere07/.file2
+
+6. Verified the file is human-readable:
+   file ./maybehere07/.file2
+   → Output: ASCII text
+
+7. Displayed the file content to get the password:
+   cat ./maybehere07/.file2
+
+What I learned:
+- `find . -type f -size 1033c` finds files exactly 1033 bytes long.
+- `file` confirms human-readable files.
+- `ls -l` verifies permissions and exact size.
+
+Next step:
+- Use the password found to login:
+  ssh bandit6@bandit.labs.overthewire.org -p 2220
+
+
+BANDIT LEVEL [LEVEL 6]
+
+# Bandit — Level 6 (Log)
+
+Steps I followed:
+
+1. Logged in using the password from Level 5:
+
+   ssh bandit6@bandit.labs.overthewire.org -p 2220
+   
+2. Searched the whole filesystem for the file meeting criteria:
+   find / -type f -user bandit7 -group bandit6 -size 33c 2>/dev/null
+   → Returned a path (example): /var/lib/whatever/somefile
+
+3. Verified file ownership, group, and size:
+   ls -l /path/to/somefile
+   → Example: -rw-r--r-- 1 bandit7 bandit6 33 Nov  1 12:34 /path/to/somefile
+
+4. Displayed the file content to get the password:
+   cat /path/to/somefile
+   → (This printed the 33-byte password for level 7 — pasted privately)
+
+What I learned:
+- `find / -type f -user bandit7 -group bandit6 -size 33c` finds files owned by bandit7:bandit6 of exact 33 bytes.
+Next step:
+- Use the password found to login:
+  ssh bandit7@bandit.labs.overthewire.org -p 2220
+
+BANDIT LEVEL [LEVEL 7]
+
+# Bandit — Level 7 (Log)
+
+Steps I followed:
+
+1. Logged in using the password from Level 6:
+   ssh bandit7@bandit.labs.overthewire.org -p 2220
+   # enter the password obtained from Level 6
+
+2. Listed files in my home directory:
+   ls -la
+   → Found file: data.txt
+
+3. Searched inside the file for the keyword "millionth":
+   grep millionth data.txt
+   → Returned: millionth <PASSWORD>
+
+What I learned:
+- `grep pattern filename` finds the pattern in the file quickly.
+- The password is located next to the word "millionth" in data.txt.
+
+Next step:
+- Use the password found to login:
+  ssh bandit8@bandit.labs.overthewire.org -p 2220
+
+BANDIT LEVEL [LEVEL 8]
+
+# Bandit — Level 8 (Log)
+
+Steps I followed:
+
+1. Logged in using the password from Level 7:
+   ssh bandit8@bandit.labs.overthewire.org -p 2220
+   # enter the password obtained from Level 7
+
+2. Listed files in my home directory:
+   ls -la
+   → Found file: data.txt
+
+3. Searched for the line that appears only once in the file:
+   sort data.txt | uniq -u
+   → This printed the unique line (the password)
+
+What I learned:
+- `sort data.txt | uniq -u` finds lines that appear exactly once.
+
+Next step:
+- Use the password found to login:
+  ssh bandit9@bandit.labs.overthewire.org -p 2220
+
+
+BANDIT LEVEL [LEVEL 9]
+
+# Bandit — Level 9 (Log)
+
+Steps I followed:
+
+1. Logged in using the password from Level 8:
+
+   ssh bandit9@bandit.labs.overthewire.org -p 2220
+
+2. Listed files in my home directory:
+   ls -la
+   → Found file: data.txt
+
+3. Extracted human-readable strings from the binary file:
+   strings data.txt
+
+4. Filtered for the line preceded by '=' characters:
+   strings data.txt | grep '='
+   → This showed lines containing '='; the password is the readable string following the '=' signs
+
+What I learned:
+- `file` identifies that data.txt is not plain text.
+- `strings` extracts readable text from binary files.
+- `grep '='` helps find the password line which is preceded by '='.
+
+Next step:
+- Use the password found to login:
+  ssh bandit10@bandit.labs.overthewire.org -p 2220
+
+
+
+
+
+
 
 
 
