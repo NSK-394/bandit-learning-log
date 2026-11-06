@@ -22,7 +22,7 @@ Steps I followed:
    cat readme
 
 4. Retrieved the password from the file:
-   ZjLjTmM6FvvyRnrb2rfNWOZOTa6ip5If
+   `<redacted: OverTheWire asks players not to publish level passwords>`
 
 What I learned:
 - How to connect to a remote host using ssh.
@@ -49,7 +49,7 @@ Steps I followed:
    (Adding ./ tells the shell that "-" is a filename, not an option)
 
 5. Retrieved the password for the next level:
-   263JGJPfgU6LtdEvgfWU1XP5yac29mFx
+   `<redacted: OverTheWire asks players not to publish level passwords>`
 
 What I learned:
 - Files with names like "-" can confuse commands because they’re treated as options.
@@ -76,7 +76,7 @@ Steps I followed:
    cat spaces\ in\ this\ filename
 
 5. Retrieved the password for the next level:
-   MNk8KNH3Usiio41PRUEoDFPqfxLPlSmx
+   `<redacted: OverTheWire asks players not to publish level passwords>`
 
 What I learned:
 - When a filename contains spaces, use quotes (" ") or escape spaces with backslashes (\\).
@@ -107,7 +107,7 @@ Steps I followed:
    cat ...Hiding-From-You
 
 6. Retrieved the password for the next level:
-   2EW7BBsr6aMMoJ2HjW067dm8EgX26xNe
+   `<redacted: OverTheWire asks players not to publish level passwords>`
 
 What I learned:
 - Hidden files in Linux start with a dot (.)
@@ -148,7 +148,7 @@ Steps I followed:
    cat ./-file07
 
 9. Retrieved the password for the next level:
-   4oQYVPkxZOOEOO5pTW81FB8j8lxXGUQw
+   `<redacted: OverTheWire asks players not to publish level passwords>`
 
 What I learned:
 - How to use the `file` command to identify file types.
